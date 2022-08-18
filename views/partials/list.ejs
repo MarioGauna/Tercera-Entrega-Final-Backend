@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Carrito</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        <% products.forEach(products=>{ %>
+            <tr>
+                <td class="table-info"><%= products.title %></td>
+                <td class="table-info"><%= products.price %></td>
+                <td class="table-info"><img src=<%= products.foto %> alt="No image" width="20px"></td>
+                <td class="table-info">
+                    <form action="/inicio/addtocart/<%= products.id %>" method="POST" enctype="application/x-www-form-urlencoded">
+                        <input type="submit" class="btn btn-primary" value="Add to Cart">
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
