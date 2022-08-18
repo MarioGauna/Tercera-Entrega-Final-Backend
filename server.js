@@ -3,6 +3,8 @@ import passport from 'passport';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import routes from './routes/routes.js';
+import routesProd from './routes/routesProd.js';
+import routesCart from './routes/routesCart.js';
 import logger from './logger/Log4jsLogger.js'
 import minimist from 'minimist';
 import './passport/local.js';
@@ -33,6 +35,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/',routes);
+app.use('/api/productos', routesProd);
+app.use('/api/carrito', routesCart);
 app.use('*',(req,res)=>{
     logger.warn(`Ruta Inexistente`);
     res.send(`Ruta Inexistente`);
